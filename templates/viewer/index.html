@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Viewer{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/viewer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/myviewer.css') }}">
+{% endblock %}
+
+{% block content %}
+
+    <div>
+        <ul class="docs-pictures clearfix">
+            <li><img src="{{ url_for('static', filename='images/emma-watson-1.jpg') }}"></li>
+            <li><img src="{{ url_for('static', filename='images/emma-watson-2.jpg') }}"></li>
+            <li><img src="{{ url_for('static', filename='images/emma-watson-3.jpg') }}"></li>
+            <li><img src="{{ url_for('static', filename='images/emma-watson-4.jpg') }}"></li>
+            <li><img src="{{ url_for('static', filename='images/emma-watson-5.jpg') }}"></li>
+            <li><img src="{{ url_for('static', filename='images/emma-watson-6.jpg') }}"></li>
+            <li><img src="{{ url_for('static', filename='images/emma-watson-7.jpg') }}"></li>
+            <li><img src="{{ url_for('static', filename='images/emma-watson-8.jpg') }}"></li>
+            <li><img src="{{ url_for('static', filename='images/emma-watson-9.jpg') }}"></li>
+        </ul>
+    </div>
+
+{% endblock %}
+
+
+{% block js_scope %}
+
+    <script src="{{ url_for('static', filename='js/viewer.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/myviewer.js') }}"></script>
+
+{% endblock %}

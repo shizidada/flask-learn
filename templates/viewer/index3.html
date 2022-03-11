@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Viewer{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='pagination/simplePagination.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="pagination-holder">
+
+        <div id="light-pagination" class="pagination"></div>
+
+    </div>
+
+
+{% endblock %}
+
+
+{% block js_scope %}
+
+    <script src="{{ url_for('static', filename='pagination/jquery.simplePagination.js') }}"></script>
+    <script src="{{ url_for('static', filename='pagination/index.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {# user-scalable=no 可以禁用其缩放（zooming）功能 #}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}{% endblock %} - 學习平台</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+
+    {% block head %}
+
+    {% endblock %}
+</head>
+<body>
+{# navbar header #}
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">toggle</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ url_for("home.index") }}">Bongo</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ url_for("home.index") }}">首页<span class="sr-only">(current)</span></a></li>
+                <li><a href="{{ url_for('question.index') }}">发布</a></li>
+                <li><a href="{{ url_for('viewer.index') }}">Viewer</a></li>
+                <li><a href="{{ url_for('viewer.zoomify') }}">Zoomify</a></li>
+                <li><a href="{{ url_for('viewer.pagination') }}">Pagination</a></li>
+                <li><a href="{{ url_for('upload.index') }}">上传下载</a></li>
+            </ul>
+
+            <form class="navbar-form navbar-left" onsubmit="return false">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="输入关键字">
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+
+            <ul class="nav navbar-nav navbar-right">
+                {% if user %}
+                    <li><a href="javascript:void(0)">{{ user.username }}</a></li>
+                    <li><a href="javascript:void(0)">注销</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login.index') }}">登录</a></li>
+                    <li><a href="{{ url_for('register.index') }}">注册</a></li>
+                {% endif %}
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+
+{# body #}
+<div class="base-main">
+
+    {% block content %}
+
+    {% endblock %}
+</div>
+
+{# footer #}
+{#{% block footer %}#}
+{##}
+{#{% endblock %}#}
+
+</body>
+<script src="{{ url_for('static', filename='js/jquery-1.12.4.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+<script src="{{ url_for('static', filename='js/base.js') }}"></script>
+{% block js_scope %}
+
+{% endblock %}
+</html>
